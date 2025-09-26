@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: intervue-live-poll-server
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: CORS_ORIGINS
+        value: "*"
