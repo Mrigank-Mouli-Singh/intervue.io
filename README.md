@@ -7,10 +7,11 @@ It supports **Teacher** and **Student** roles with live results, timers, chat, a
 
 ## 🌐 Live Demo
 
-- **Frontend (Netlify):** [Live App]([(https://mypollapp.netlify.app/)](https://mypollapp.netlify.app/))  
-- **Backend (Render):** [API Server]([(https://pollapp-zym2.onrender.com/)](https://pollapp-zym2.onrender.com/))
+- **Frontend (Netlify):** [Live App](https://mypollapp.netlify.app/)  
+- **Backend (Render):** [API Server](https://pollapp-zym2.onrender.com/)
 
 ---
+
 
 ## ✨ Features
 
