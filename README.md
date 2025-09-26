@@ -1,77 +1,103 @@
-# Intervue Live Polling System
+# 📊 Intervue Live Polling System
 
-A full-stack implementation (mandatory requirements + optional configurable time limit) for the **Live Polling System** assignment.
+A real-time polling system built with **React + Vite (frontend)** and **Express.js + Socket.io (backend)**.  
+It supports **Teacher** and **Student** roles with live results, timers, chat, and student management.
 
-## Tech
-- Frontend: React (Vite) + socket.io-client
-- Backend: Express.js + Socket.io
+---
 
-## Project Structure
+## 🌐 Live Demo
+
+- **Frontend (Netlify):** [Live App]([(https://mypollapp.netlify.app/)](https://mypollapp.netlify.app/))  
+- **Backend (Render):** [API Server]([(https://pollapp-zym2.onrender.com/)](https://pollapp-zym2.onrender.com/))
+
+---
+
+## ✨ Features
+
+### 👨‍🏫 Teacher
+- Create polls with a configurable time limit (default 60s).
+- Start a new question only if all students have answered or no active poll exists.
+- View live results in real-time.
+- See a list of connected students.
+- **Remove students** if needed.
+- View past poll history.
+- Chat with students via popup.
+
+### 👩‍🎓 Student
+- Enter a unique name (per tab).
+- Receive questions live from the teacher.
+- Submit answers (limited to one per poll).
+- See live poll results after submission or after time expires.
+- Participate in real-time chat with teacher and peers.
+
+### 🌟 Bonus
+- Floating chat widget (teacher ↔ student).
+- Poll history stored server-side (not just locally).
+- Responsive, clean UI inspired by the given Figma designs.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React 18, Vite, React Router, Socket.io-client
+- **Backend:** Node.js, Express.js, Socket.io
+- **Deployment:**  
+  - Frontend → Netlify  
+  - Backend → Render
+
+---
+
+## 🚀 Local Development
+
+If you want to run the app locally:
+
+### 1. Clone repo
+```bash
+git clone https://github.com/yourusername/intervue-live-poll.git
+cd intervue-live-poll
 ```
-intervue-live-poll/
-  client/   # React app
-  server/   # Express + Socket.io
-```
 
-## Running Locally (if you ever need it)
-1) Server
+2. Start Backend
 ```bash
 cd server
-cp .env.example .env
 npm install
-npm run dev
+npm start
 ```
-2) Client
+Runs on http://localhost:8080
+
+3. Start Frontend
 ```bash
-cd client
+cd ../client
 npm install
-echo "VITE_SERVER_URL=http://localhost:8080" > .env
+```
+Create a .env file inside /client:
+
+```ini
+VITE_SERVER_URL=http://localhost:8080
+```
+Then run:
+
+```bash
 npm run dev
 ```
+Frontend runs on http://localhost:5173
 
-## One-Click Hosting (No local machine)
 
-### Backend (Render)
-1. Push `/server` folder to a new GitHub repo (or a mono-repo).
-2. Create a new **Web Service** on [Render], pick the repo, root = `server/`.
-3. **Build Command:** `npm install`
-4. **Start Command:** `npm start`
-5. Add env:
-   - `CORS_ORIGINS` = `*` (or your frontend URL)
-6. Save the deployed URL (e.g., `https://your-api.onrender.com`).
+## 📂 Project Structure
+```pgsql
+intervue-live-poll/
+├── client/        # React frontend (Netlify)
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+├── server/        # Express + Socket.io backend (Render)
+│   ├── index.js
+│   └── package.json
+└── README.md
+```
 
-### Frontend (Vercel / Netlify)
-1. Create a new project from the same repo, root = `client/`.
-2. Set env var:
-   - `VITE_SERVER_URL` = your backend URL from Render
-3. **Build Command:** `npm run build`
-4. **Output dir:** `dist`
-
-### Routes
-- Teacher: `/teacher`
-- Student: `/student`
-
-## Notes vs. Requirements
-- Student **name per tab**: stored in `sessionStorage`.
-- Students can answer only **after a question is asked**.
-- Results visible **after submission** (or when timer ends).
-- **60s max** default; teacher can configure duration (good-to-have).
-- Teacher can **only start a new question** if none has been asked yet **or** everyone answered the previous question **or** the timer ended.
-- Both personas view **live** results (Socket.io).
-
-> Bonus features like chat and persisted past results are not implemented (only ephemeral in-memory past snapshot is broadcast).
-
-## Deployment
-
-### Frontend (Netlify)
-1. In Netlify, create a new site from your Git or upload the `client/` folder.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. Add environment variable `VITE_SERVER_URL` with your Render server URL (e.g. `https://your-app.onrender.com`).
-
-### Backend (Render)
-1. Create a new **Web Service** and select the `server/` folder.
-2. Build command: `npm install`
-3. Start command: `npm start`
-4. (Optional) Set `CORS_ORIGINS=*` or your Netlify site URL for strict CORS.
+## 👤 Author
+Mrigank Mouli Singh
+Portfolio
 
